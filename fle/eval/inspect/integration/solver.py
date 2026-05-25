@@ -384,7 +384,6 @@ Analyze the current state and write a Python program using the FLE API to progre
                     # Generate response using Inspect's model with reasoning support
                     generation_config = {
                         "max_tokens": 4096,  # More tokens for complex programs
-                        "transforms": ["middle-out"],
                         "reasoning_effort": "minimal",
                         # "temperature": 0.1
                     }
@@ -905,7 +904,9 @@ def factorio_unbounded_solver():
                         getattr(_model, "name", "") if hasattr(_model, "name") else ""
                     )
                     if model_name_str and "openrouter" in model_name_str:
-                        generation_config["transforms"] = ["middle-out"]
+                        generation_config["extra_body"] = {
+                            "transforms": ["middle-out"]
+                        }
 
                     # Track inference latency
                     inference_start = time.time()

@@ -241,7 +241,6 @@ Analyze the current state and write a Python program using the FLE API to progre
                     # Generate LLM response (host-side)
                     generation_config = {
                         "max_tokens": 4096,
-                        "transforms": ["middle-out"],
                         "reasoning_effort": "minimal",
                     }
                     state.output = await get_model().generate(
@@ -598,7 +597,9 @@ def factorio_sandbox_unbounded_solver():
                         getattr(_model, "name", "") if hasattr(_model, "name") else ""
                     )
                     if model_name_str and "openrouter" in model_name_str:
-                        generation_config["transforms"] = ["middle-out"]
+                        generation_config["extra_body"] = {
+                            "transforms": ["middle-out"]
+                        }
 
                     inference_start = time.time()
                     try:

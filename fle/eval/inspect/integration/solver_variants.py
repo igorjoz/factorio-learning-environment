@@ -342,7 +342,7 @@ Progress: {(step / trajectory_length) * 100:.1f}% of trajectory complete
                     getattr(_model, "name", "") if hasattr(_model, "name") else ""
                 )
                 if model_name_str and "openrouter" in model_name_str:
-                    generation_config["transforms"] = ["middle-out"]
+                    generation_config["extra_body"] = {"transforms": ["middle-out"]}
 
                 inference_start = time.time()
                 output = await _model.generate(
@@ -1075,7 +1075,7 @@ Now begin building your factory step by step."""
                         getattr(_model, "name", "") if hasattr(_model, "name") else ""
                     )
                     if model_name_str and "openrouter" in model_name_str:
-                        generation_config["transforms"] = ["middle-out"]
+                        generation_config["extra_body"] = {"transforms": ["middle-out"]}
 
                     inference_start = time.time()
                     output = await _model.generate(
@@ -1562,7 +1562,7 @@ Analyze the current state and write a Python program using the FLE API to expand
                         getattr(_model, "name", "") if hasattr(_model, "name") else ""
                     )
                     if model_name_str and "openrouter" in model_name_str:
-                        generation_config["transforms"] = ["middle-out"]
+                        generation_config["extra_body"] = {"transforms": ["middle-out"]}
 
                     inference_start = time.time()
                     output = await _model.generate(
@@ -2116,7 +2116,7 @@ Analyze the current state and write a Python program using the FLE API to expand
                         getattr(_model, "name", "") if hasattr(_model, "name") else ""
                     )
                     if model_name_str and "openrouter" in model_name_str:
-                        generation_config["transforms"] = ["middle-out"]
+                        generation_config["extra_body"] = {"transforms": ["middle-out"]}
 
                     inference_start = time.time()
                     output = await _model.generate(
@@ -2617,7 +2617,7 @@ Analyze the current state and write a Python program using the FLE API to expand
                         getattr(_model, "name", "") if hasattr(_model, "name") else ""
                     )
                     if model_name_str and "openrouter" in model_name_str:
-                        generation_config["transforms"] = ["middle-out"]
+                        generation_config["extra_body"] = {"transforms": ["middle-out"]}
 
                     inference_start = time.time()
                     output = await _model.generate(
@@ -3064,7 +3064,7 @@ Analyze the current state and write a Python program using the FLE API to expand
                         getattr(_model, "name", "") if hasattr(_model, "name") else ""
                     )
                     if model_name_str and "openrouter" in model_name_str:
-                        generation_config["transforms"] = ["middle-out"]
+                        generation_config["extra_body"] = {"transforms": ["middle-out"]}
 
                     inference_start = time.time()
                     output = await _model.generate(
