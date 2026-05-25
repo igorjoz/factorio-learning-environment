@@ -383,10 +383,13 @@ Analyze the current state and write a Python program using the FLE API to progre
 
                     # Generate response using Inspect's model with reasoning support
                     generation_config = {
-                        "max_tokens": 4096,  # More tokens for complex programs
+                        "max_tokens": int(os.getenv("FLE_MAX_TOKENS", "4096")),
                         "reasoning_effort": "minimal",
                         # "temperature": 0.1
                     }
+                    temperature = os.getenv("FLE_TEMPERATURE")
+                    if temperature is not None:
+                        generation_config["temperature"] = float(temperature)
 
                     state.output = await get_model().generate(
                         input=state.messages,

@@ -240,9 +240,12 @@ Analyze the current state and write a Python program using the FLE API to progre
 
                     # Generate LLM response (host-side)
                     generation_config = {
-                        "max_tokens": 4096,
+                        "max_tokens": int(os.getenv("FLE_MAX_TOKENS", "4096")),
                         "reasoning_effort": "minimal",
                     }
+                    temperature = os.getenv("FLE_TEMPERATURE")
+                    if temperature is not None:
+                        generation_config["temperature"] = float(temperature)
                     state.output = await get_model().generate(
                         input=state.messages,
                         config=generation_config,

@@ -225,7 +225,7 @@ def fle_inspect_eval(args):
             cmd.extend(["--epochs-reducer", "mean"])
 
         if "openrouter" in args.model:
-            cmd.extend(["-M", "extra_body={'transforms':['middle-out']}"])
+            cmd.extend(["-M", "transforms=['middle-out']"])
         # Set environment variables for dynamic task configuration
         if args.env_id:
             os.environ["FLE_ENV_ID"] = args.env_id
